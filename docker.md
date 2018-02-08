@@ -37,5 +37,5 @@ docker-compose exec kafka bash
 docker-compose exec kafka bash
 
 # after previous command, we are in kafka
-/opt/kafka/bin/kafka-topics.sh --list --zookeeper localhost:2181
+/opt/kafka/bin/kafka-topics.sh --list --zookeeper zookeeper:2181
 ```
