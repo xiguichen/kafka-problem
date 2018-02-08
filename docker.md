@@ -30,3 +30,12 @@ docker-compose exec kafka bash
 # after previous command, we are in kafka
 /opt/kafka/bin/kafka-topics.sh --delete --zookeeper zookeeper:2181 --topic mytopic
 ```
+
+### List all the topic in kafka by command
+```bash
+# This command is running in the host
+docker-compose exec kafka bash
+
+# after previous command, we are in kafka
+/opt/kafka/bin/kafka-topics.sh --list --zookeeper localhost:2181
+```
