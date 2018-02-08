@@ -41,3 +41,12 @@ docker-compose exec kafka bash
 # after previous command, we are in kafka
 /opt/kafka/bin/kafka-topics.sh --list --zookeeper zookeeper:2181
 ```
+
+### Consume a topic in kafka by command
+```bash
+# This command is running in the host
+docker-compose exec kafka bash
+
+# after previous command, we are in kafka
+/opt/kafka/bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic mykafka --from-beginning  
+```
