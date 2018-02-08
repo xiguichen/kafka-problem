@@ -24,5 +24,9 @@ docker-compose exec kafka bash
 
 ### Delete a topic in kafka by command
 ```bash
-kafka-topics.sh --delete --zookeeper zookeeper:2181 --topic mytopic
+# This command is running in the host
+docker-compose exec kafka bash
+
+# after previous command, we are in kafka
+/opt/kafka/bin/kafka-topics.sh --delete --zookeeper zookeeper:2181 --topic mytopic
 ```
