@@ -31,6 +31,19 @@ docker-compose exec kafka bash
 
 # after previous command, we are in kafka
 $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper zookeeper:2181 --topic mytopic
+
+# after previous command, we should have deleted the topic if there is no data transfered
+# In order to delete the topic in that case, we need to delete the kafka data and zookeeper data
+$KAFKA_HOME/bin/zookeeper-shell.sh
+
+# after previous command, we are in zookeeper shell, run below command to delete the topic from zookeeper
+rmr  /brokers/topics/mytopic
+
+# find where the kafka data is stored, example log.dirs=/kafka/kafka-logs-00c386f8d753
+cat config/server.properties  | grep log.dirs
+
+# remove kafka data
+rm -rf /kafka/kafka-logs-00c386f8d753/mytopic*
 ```
 
 ### List all the topic in kafka by command
@@ -48,5 +61,5 @@ $KAFKA_HOME/bin/kafka-topics.sh --list --zookeeper zookeeper:2181
 docker-compose exec kafka bash
 
 # after previous command, we are in kafka
-$KAFKA_HOME/bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic mykafka --from-beginning  
+$KAFKA_HOME/bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic mykafka --from-beginning
 ```
