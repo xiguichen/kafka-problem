@@ -61,5 +61,5 @@ $KAFKA_HOME/bin/kafka-topics.sh --list --zookeeper zookeeper:2181
 docker-compose exec kafka bash
 
 # after previous command, we are in kafka
-$KAFKA_HOME/bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic mykafka --from-beginning
+$KAFKA_HOME/bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic mytopic --from-beginning
 ```
